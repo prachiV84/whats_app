@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whats_app/colors/colors.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -24,7 +25,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
           actions: [
             IconButton(
-              icon: const Icon(Icons.camera, color: Colors.white),
+              icon: const Icon(Icons.camera_alt_outlined, color: Colors.white),
               onPressed: () {},
             ),
             IconButton(
@@ -33,7 +34,42 @@ class _MainScreenState extends State<MainScreen> {
             ),
           ],
         ),
-        body:const Text("mobile screen body..."),
+        body: const Text("mobile screen body..."),
+        bottomNavigationBar: DefaultTabController(
+          length: 4,
+          initialIndex: 0,
+          child: TabBar(
+            indicatorColor: tabColor,
+            indicatorWeight: 4,
+            labelColor: tabColor,
+            unselectedLabelColor: Colors.grey,
+            labelStyle: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+            tabs: [
+              Tab(
+                text: 'Chats',
+                icon: IconButton(
+                    onPressed: () {}, icon: Icon(Icons.chat_rounded)),
+              ),
+              Tab(
+                text: 'Updates',
+                icon: IconButton(
+                    onPressed: () {}, icon: Icon(Icons.update_sharp)),
+              ),
+              Tab(
+                text: 'Communities',
+                icon: IconButton(
+                    onPressed: () {}, icon: Icon(Icons.people_outline)),
+              ),
+              Tab(
+                text: 'Calls',
+                icon: IconButton(
+                    onPressed: () {}, icon: Icon(Icons.call_outlined)),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
