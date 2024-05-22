@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:whats_app/colors/colors.dart';
+import 'package:whats_app/presentation/screens/call_screen.dart';
+import 'package:whats_app/presentation/screens/communities_screen.dart';
+import 'package:whats_app/presentation/screens/data_screen.dart';
+import 'package:whats_app/presentation/screens/update_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -12,7 +16,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Scaffold(
         appBar: AppBar(
           title: Text(
@@ -34,41 +38,47 @@ class _MainScreenState extends State<MainScreen> {
             ),
           ],
         ),
-        body: const Text("mobile screen body..."),
-        bottomNavigationBar: DefaultTabController(
-          length: 4,
-          initialIndex: 0,
-          child: TabBar(
-            indicatorColor: tabColor,
-            indicatorWeight: 4,
-            labelColor: tabColor,
-            unselectedLabelColor: Colors.grey,
-            labelStyle: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-            tabs: [
-              Tab(
-                text: 'Chats',
-                icon: IconButton(
-                    onPressed: () {}, icon: Icon(Icons.chat_rounded)),
-              ),
-              Tab(
-                text: 'Updates',
-                icon: IconButton(
-                    onPressed: () {}, icon: Icon(Icons.update_sharp)),
-              ),
-              Tab(
-                text: 'Communities',
-                icon: IconButton(
-                    onPressed: () {}, icon: Icon(Icons.people_outline)),
-              ),
-              Tab(
-                text: 'Calls',
-                icon: IconButton(
-                    onPressed: () {}, icon: Icon(Icons.call_outlined)),
-              ),
-            ],
+
+        body: TabBarView(
+          children: [ DataScreen(),UpdateScreen(),CommunitiesScreen(),CallScreen()],
+        ),
+        bottomNavigationBar: TabBar(
+          indicatorColor: tabColor,
+          indicatorWeight: 4,
+          labelColor: tabColor,
+          unselectedLabelColor: Colors.grey,
+          labelStyle: TextStyle(
+            fontWeight: FontWeight.bold,
           ),
+          tabs: [
+            Tab(
+              text: 'Chats',
+              icon: IconButton(
+                  onPressed: (){},
+                  icon: Icon(Icons.chat_rounded)),
+            ),
+            Tab(
+              text: 'Updates',
+              icon: IconButton(
+                  onPressed: () {}, icon: Icon(Icons.update_sharp)),
+            ),
+            Tab(
+              text: 'Communities',
+              icon: IconButton(
+                  onPressed: () {
+                    CommunitiesScreen();
+                  },
+                  icon: Icon(Icons.people_outline)),
+            ),
+            Tab(
+              text: 'Calls',
+              icon: IconButton(
+                  onPressed: () {
+                    CallScreen();
+                  },
+                  icon: Icon(Icons.call_outlined)),
+            ),
+          ],
         ),
       ),
     );
